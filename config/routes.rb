@@ -1,19 +1,12 @@
-Rails.application.routes.draw do
-  get 'tmovies/index'
+# config/routes.rb
+    Rails.application.routes.draw do
+  get 'sessions/new'
 
-  get 'tmovies/show'
+  get 'sessions/create'
 
-  get 'tmovies/new'
+      resources :movies
+      resources :users, only: [:new, :create]
+      resources :sessions, only: [:new, :create]
+      resources :sessions, only: [:new, :create, :destroy]
+    end
 
-  get 'tmovies/edit'
-
-  get 'movies/index'
-
-  get 'movies/show'
-
-  get 'movies/new'
-
-  get 'movies/edit'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
