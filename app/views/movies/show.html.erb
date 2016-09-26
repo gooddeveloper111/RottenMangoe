@@ -1,22 +1,55 @@
-<%= link_to "Back to all movies", movies_path %><br/>
-
-    <%= link_to image_tag(@movie.poster_image_url), movie_path(@movie) %>
-    <h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, data: {confirm: "You sure?"} %>)</h2>
-    <h3><%= @movie.release_date %></h3>
-    <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
-    <p><%= @movie.description %></p>
-
-    <hr>
-
-    <h3>Reviews of <em><%= @movie.title %></em></h3>
-    <% if current_user %>
-      <% @movie.reviews.each do |review| %>
-        <p><%= review.text %></p>
-        <p><%= review.rating_out_of_ten %>/10</p>
-        <small>- <%= review.user.email %></small><br/>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="media">
+        <div class="media-left">
+          <a href="<%= movie_path(@movie)%>">
+            <%= image_tag(@movie.picture_url, class: "media-object img") %>
+          </a>
+        </div>
+        <div class="media-body">
+          <h1 class="media-heading"> <%= link_to @movie.title, movie_path(@movie) %> </h1>
+          <h3><%= formatted_date(@movie.release_date) %></h3>
+          <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
+          <% if current_user && admin? %>
+              <h2><%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete %> </h2>
+          <% end%> 
+          <p><%= @movie.description %></p> <br>
+          <% unless @movie.reviews.nil? %>
+            <p><%= @movie.review_average %>/10 <img class="rating" src="https://cdn0.iconfinder.com/data/icons/fruits/128/Mango.png"></p>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+  </div> 
+  <hr> 
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">Reviews of <em><%= @movie.title %></em></h3>
+      <% if @movie.reviews.size != 0 %>
+        <p class="text-center"> Average Rating <%= @movie.review_average %>/10</p>
       <% end %>
-      <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
-    <% else %>
-      <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
-    <% end %>
-    
+      <hr>
+      <% if current_user %>
+        <% @movie.reviews.each do |review| %>
+          <p><%= review.text %></p>
+          <p><%= review.rating_out_of_ten %>/10</p>
+          <div class="row">
+            <div class="col-md-12">
+              <p> Reviewed by: <%= link_to review.user.full_name, user_path(review.user.id) %></p>
+              <hr>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
+          </div>
+        </div>
+      <% else %>
+        <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
+      <% end %>
+    </div>
+  </div>
+</div>
+

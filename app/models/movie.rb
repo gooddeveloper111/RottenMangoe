@@ -1,33 +1,44 @@
-class Movie < ActiveRecord::Base
+class Movie < ApplicationRecord
 
-      has_many :reviews
-      
-      validates :title,
-        presence: true
+  mount_uploader :picture, PictureUploader
 
-      validates :director,
-        presence: true
+  has_many :reviews
 
-      validates :runtime_in_minutes,
-        numericality: { only_integer: true }
+  validates :title,
+    presence: true
 
-      validates :description,
-        presence: true
+  validates :director,
+    presence: true
 
-      validates :poster_image_url,
-        presence: true
+  validates :runtime_in_minutes,
+    numericality: { only_integer: true }
 
-      validates :release_date,
-        presence: true
+  validates :description,
+    presence: true
 
-      validate :release_date_is_in_the_past
+  validates :release_date,
+    presence: true
 
-      protected
+  validate :release_date_is_in_the_past
 
-      def release_date_is_in_the_past
-        if release_date.present?
-          errors.add(:release_date, "should be in the past") if release_date > Date.today
-        end
-      end
+  scope :search, -> (search) {where('director LIKE ? OR title LIKE ?', "%#{search}%", "%#{search}%")}
 
+  scope :short_duration, -> (runtime_in_minutes) {where('runtime_in_minutes < 90')}
+
+  scope :med_duration, -> (runtime_in_minutes) {where('runtime_in_minutes < 120 AND runtime_in_minutes > 90')}
+
+  scope :long_duration, -> (runtime_in_minutes) {where('runtime_in_minutes >= 120')}
+
+  def review_average
+    reviews.sum(:rating_out_of_ten)/reviews.size unless reviews.empty?
+  end
+  
+  protected
+
+  def release_date_is_in_the_past
+    if release_date.present?
+      errors.add(:release_date, "should be in the past") if release_date > Date.today
     end
+  end
+
+end

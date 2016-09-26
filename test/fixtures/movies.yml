@@ -2,16 +2,16 @@
 
 one:
   title: MyString
+  release_date: MyString
   director: MyString
-  runtime_in_minutes: 1
-  description: MyText
+  runtime_in_minutes: MyString
+  description: MyString
   poster_image_url: MyString
-  release_date: 2016-08-19 20:52:29
 
 two:
   title: MyString
+  release_date: MyString
   director: MyString
-  runtime_in_minutes: 1
-  description: MyText
+  runtime_in_minutes: MyString
+  description: MyString
   poster_image_url: MyString
-  release_date: 2016-08-19 20:52:29

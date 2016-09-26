@@ -1,0 +1,30 @@
+<div clas="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="media">
+        <div class="media-left">
+          <a href="<%= movie_path(movie)%>">
+            <%= image_tag(movie.picture_url, class: "media-object") %>
+          </a>
+        </div>
+        <div class="media-body">
+          <h1 class="media-heading"> <%= link_to movie.title, movie_path(movie) %> </h1>
+          <h3><%= formatted_date(movie.release_date) %></h3>
+          <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+          <p><%= movie.description %></p> <br>
+          <% unless movie.reviews.nil? %>
+            <p><%= movie.review_average %>/10 <img class="rating" src="https://cdn0.iconfinder.com/data/icons/fruits/128/Mango.png"></p>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+  </div> 
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <%= paginate @movies, :theme => 'twitter-bootstrap-3'%>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function(){
+    $('.img').hover(function() {
+        $(".img").addClass('transition');
+
+    }, function() {
+        $(".img").removeClass('transition');
+    });
+});

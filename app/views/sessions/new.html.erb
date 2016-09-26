@@ -1,12 +1,19 @@
-<h1>Log In</h1>
-    <%= form_tag sessions_path do %>
+<div class="container">
+  <h1 class="text-center">Log In</h1>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
       <div>
+      <%= form_tag session_path, method: 'post', class: "form-group" do %>
         <%= label_tag :email %><br/>
-        <%= text_field_tag :email %>
+        <%= text_field_tag :email, nil, class: "form-control" %>
       </div>
-      <div>
+      <div class="form-group">
         <%= label_tag :password %><br/>
-        <%= password_field_tag :password %>
-      </div>
-      <div><%= submit_tag "Log In" %></div>
-    <% end %>
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div class="form-group">
+      <div><%= submit_tag "Log In", class: "btn btn-success btn-block" %></div>
+    </div>
+  </div>
+  <% end %>
+</div>
+

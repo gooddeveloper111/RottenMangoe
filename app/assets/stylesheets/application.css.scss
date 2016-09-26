@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  color: white;
+  background: #222222;
+  margin-top: 50px;
+}
+
+h1 {
+  color: grey;
+}
+
+img {
+  max-height: 250px;
+  max-width: 140px;
+}
+
+footer {
+  background-color:Blue; 
+}
+
+a {
+  color: #00FF00;
+}
+
+a:hover {
+  color :rgba(255, 0, 0, 0.75);
+}
+
+hr {
+  background-color: #red;
+}
+
+input, button, select, textarea {
+  font-family: inherit; 
+  font-size: 23;
+  line-height: inherit; 
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-right:10px;
+}
+
+.icon {
+  height:50px;
+  width:70px;
+  margin-left: 200px;
+}
+
+.rating {
+  height:22px;
+}
+
+.transition{
+  transform: translateX(20px);
+  opacity: 70;
+}
+
+.gradient{
+  background-color: red;
+}
+
+
+
+
+.background-color{
+  background: #222222;
+}
+
+.header-color{
+  color: DarkBlue;
+  font-size: 54px;
+}
+
+.center-btn{
+  margin-top: 10%;
+}
+
+.media-thumb{
+  max-width:100px; 
+  max-height:100px;
+}
+
+/*snippets*/
+
+.blk-text{
+  color: blue;
+}
+
+.pad-left{
+  padding-left:10px;
+}
+
+/*---------BUTTON------------*/
+
+.btn.btn-success {
+  color :blue;
+  background-color: #efec8d;
+  border-color: #efed1d;
+  border-radius: 9px;
+}
+
+.btn.btn-success:hover {
+  border-color: #efed1d;
+  background-color: #222222;
+  color :#efed1d;
+}
+
+.btn.btn-success:active:hover {
+  background-color: #222222;
+  border-color: #efed1d;
+  color :#efed1d;
+}
+
+.btn.btn-success:active {
+  background-color: #efed1d;
+  border-color: #efed1d;
+  border-radius: 1px;
+  color :black;
+}
+
+.btn.btn-success:focus, .btn-success.focus {
+  background-color: #efed1d;
+  border-color: #efed1d;
+  border-radius: 1px;
+  color :black;
+}
+
+.btn.btn-success:active:hover, .btn-success:active:focus, .btn-success:active.focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success.active.focus, .open > .btn-success.dropdown-toggle:hover, .open > .btn-success.dropdown-toggle:focus, .open > .btn-success.dropdown-toggle.focus {
+  color :black;
+  background-color: #efed1d;
+  border-color: #efed1d;
+  border-radius: 1px;
+}
+
+

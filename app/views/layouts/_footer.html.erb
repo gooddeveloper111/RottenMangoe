@@ -1,9 +1,18 @@
-<footer>
-      <small>
-        <% if current_user %>
-          Signed in as <%= current_user.email %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
-        <% else %>
-          <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+<div class="container">
+  <footer>
+    <small>
+      <% if current_user %>
+        Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
+        <% if current_user.admin? || is_impersonating? %>
+          <p>Admin: <%= link_to "All Users", admin_users_path %></p>
+          <% if is_impersonating? %>
+            <p> Is impersonating <%= "#{current_user.full_name}" %> </p>
+            <%= link_to "End Impersonating", end_impersonating_admin_user_path(current_user), method: :post %>
+          <% end %>
         <% end %>
-      </small>
-    </footer>
+      <% else %>
+        <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+      <% end %>
+    </small>
+  </footer><br><br>
+</div>

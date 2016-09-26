@@ -1,0 +1,13 @@
+<%= form_tag "/movies", method: :get, :class => "form-group" do %>
+<div class="row">
+  <div class="col-xs-4 col-sm-offset-4">
+    <div class="text-center blk-text">
+      <%= text_field_tag :search, nil, placeholder: "Search", class: "form-control" %>
+      <%= select_tag(:duration, options_for_select([['Duration', 0],['Under 90 Minutes', 1],['Between 90 and 120 minutes', 2],['Over 120 mimutes', 3]]))%><br>
+      <%= submit_tag "Search", name: nil, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+<% end %>   
+    
+

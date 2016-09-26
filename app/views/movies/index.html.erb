@@ -1,11 +1,30 @@
-<h1>Rotten Mangoes</h1>
-    <%= link_to "Submit a movie!", new_movie_path %>
+<div class="background-color">
+  <div class="gradient">
+  
+  <div class="wide">
+    <div class="text-center header-color">
+      <div class="col-xs-5 line"><hr></div>
+      <div class="col-xs-2 logo">Rotten Mangoes</div>
+      <div class="col-xs-5 line"><hr></div>
+      <div class="row"> 
+        <div class="col-xs-4 col-xs-offset-4">
+          <div class="text-center">
+             <%= link_to "Submit a Movie", new_movie_path, class: "btn btn-success btn-block center-btn" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!--close gradient -->
+  </div>
+  <div class="container">
+    <div>
+      <p><%= render 'form2' %></p>
+    </div>
     <hr>
-    <% @movies.each do |movie| %>
-      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h3><%= movie.release_date %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p><%= movie.description %></p>
-      <hr>
-    <% end %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= render @movies %> 
+      </div>
+    </div>
+  </div>
+</div>

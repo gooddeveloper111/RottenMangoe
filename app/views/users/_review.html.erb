@@ -1,0 +1,21 @@
+<% @user.reviews.each_slice(2) do |review_slice| %>
+  <div class="row">
+    <% review_slice.each do |review| %>
+      <div class="col-xs-6">
+        <div class="media">
+          <div class="media-left"> 
+            <a href="<%= movie_path(review.movie)%>">
+              <%= image_tag(review.movie.picture_url, class: "media-object media-thumb")%>
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"> <%=link_to review.movie.title, movie_path(review.movie)%> </h4>
+            <p><%= review.rating_out_of_ten %>/10 <img class="rating" src="https://cdn0.iconfinder.com/data/icons/fruits/128/Mango.png"></p>
+            <p><%= review.text %></p>
+            <p>Updated <%= formatted_date(review.updated_at) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
